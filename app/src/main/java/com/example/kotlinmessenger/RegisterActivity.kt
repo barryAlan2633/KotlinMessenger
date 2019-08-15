@@ -118,6 +118,11 @@ var selectedPhotoUri: Uri? = null
         ref.setValue(user)
             .addOnSuccessListener {
                 Log.d("RegisterActivity", "Saved user object to firebase database")
+
+                var intent = Intent(this,LatestMessagesActivity::class.java)
+                //Makes you go back to desktop instead of last activity
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
             }
     }
 }
